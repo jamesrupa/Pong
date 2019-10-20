@@ -6,6 +6,11 @@ sc.bgcolor('black')
 sc.setup(width=800, height=600)
 sc.tracer(0)
 
+# Score
+scoreOne = 0
+scoreTwo = 0
+
+
 # Paddle 1
 paddleOne = turtle.Turtle()
 paddleOne.speed(0)
@@ -35,29 +40,39 @@ ball.goto(0, 0)
 ball.dx = 1
 ball.dy = -1
 
+# Pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.shape("square")
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "normal"))
+
 
 # Functions
 def paddleOne_up():
     y = paddleOne.ycor()
-    y += 20
+    y += 30
     paddleOne.sety(y)
 
 
 def paddleOne_down():
     y = paddleOne.ycor()
-    y -= 20
+    y -= 30
     paddleOne.sety(y)
 
 
 def paddleTwo_up():
     y = paddleTwo.ycor()
-    y += 20
+    y += 30
     paddleTwo.sety(y)
 
 
 def paddleTwo_down():
     y = paddleTwo.ycor()
-    y -= 20
+    y -= 30
     paddleTwo.sety(y)
 
 
@@ -85,11 +100,17 @@ while True:
         ball.sety(-290)
         ball.dy *= -1
 
-    if ball.xcor() > 390:
+    if ball.xcor() > 350:
+        scoreOne += 1
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(scoreOne, scoreTwo), align="center", font=("Courier", 24, "normal"))
         ball.goto(0, 0)
         ball.dx *= -1
 
-    elif ball.xcor() < -390:
+    elif ball.xcor() < -350:
+        scoreTwo += 1
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(scoreOne, scoreTwo), align="center", font=("Courier", 24, "normal"))
         ball.goto(0, 0)
         ball.dx *= -1
 
