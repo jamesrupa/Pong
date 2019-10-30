@@ -1,4 +1,5 @@
 import turtle
+import tkinter
 
 sc = turtle.Screen()
 sc.title('Pong')
@@ -92,6 +93,18 @@ while True:
     ball.sety(ball.ycor() + ball.dy)
 
     # Border
+    if paddleOne.ycor() > 250:
+        paddleOne.sety(250)
+
+    if paddleTwo.ycor() > 250:
+        paddleTwo.sety(250)
+
+    if paddleOne.ycor() < -250:
+        paddleOne.sety(-250)
+
+    if paddleTwo.ycor() < -250:
+        paddleTwo.sety(-250)
+
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
